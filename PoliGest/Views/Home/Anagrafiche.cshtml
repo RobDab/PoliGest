@@ -1,0 +1,68 @@
+﻿@model IEnumerable<PoliGest.Models.Anagrafica>
+
+@{
+    ViewBag.Title = "Anagrafiche";
+}
+
+<h2>Anagrafiche</h2>
+
+<p>
+    @Html.ActionLink("Aggiungi Anagrafica", "CreateAnagrafica")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indirizzo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PuntiPatente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NeoPatentato)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Indirizzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PuntiPatente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeoPatentato)
+            </td>
+            <td>
+               
+                @Html.ActionLink("Crea Verbale", "NewVerbale", new { id=item.IDAngrafica  })
+               
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (ViewBag.ErrorMsg != null)
+{
+    <hr />
+    <p> @ViewBag.ErrorMsg </p>
+    <hr />
+}
+
