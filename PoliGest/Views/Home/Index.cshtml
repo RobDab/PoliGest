@@ -3,6 +3,48 @@
     ViewBag.Title = "Index";
 }
 
-<h2>BENVENUTO</h2>
+<h2 style="text-align: center;">BENVENUTO</h2>
+
+<div style="margin-top: 1em;" class="row">
+
+    <div class="col-sm-6">
+        <h3 style="color: rgb(27, 27, 27)">Verbali per Anagrafica</h3>
+        <div style="margin-top: 1em; width: 100%; border: 0, solid; background-color: grey; border-radius: 10px; padding: 1em;
+                height: 200px; overflow-y:scroll;">
+
+            @{
+                Html.RenderAction("VerbaliPerAnagrafica");
+            }
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h3 style="color: rgb(27, 27, 27)">Decurtamento Punti per Anagrafica</h3>
+        <div style="margin-top: 1em; width: 100%; border: 0, solid; background-color: grey; border-radius: 10px; padding: 1em;
+                height: 200px; overflow-y:scroll;">
+            @{
+                Html.RenderAction("DecurtamentoPerAnagrafica");
+            }
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h3 style="color: rgb(27, 27, 27)">Decurtamenti Gravi</h3>
+        <div style="margin-top: 1em; width: 100%; border: 0, solid; background-color: grey; border-radius: 10px; padding: 1em;
+                height: 200px; overflow-y:scroll;">
+            @{
+                Html.RenderAction("DecurtamentiGravi");
+            }
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h3 style="color: rgb(27, 27, 27)">Verbali a importi elevati</h3>
+        <div style="margin-top: 1em; width: 100%; border: 0, solid; background-color: grey; border-radius: 10px; padding: 1em;
+                height: 200px; overflow-y:scroll;">
+            @{
+                Html.RenderAction("ImportiElevati");
+            }
+        </div>
+    </div>
+
+</div>
 
 

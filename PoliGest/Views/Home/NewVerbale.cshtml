@@ -5,17 +5,22 @@
 }
 
 <h2>Nuovo Verbale</h2>
-
-@using (Html.BeginForm()) 
+@if (ViewBag.ErrorMsg != null)
+{
+    <hr />
+    <p> Creazione Verbale non riuscita. Verifica i dettagli inseriti e riprova. </p>
+    <hr />
+}
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
 
+        @Html.HiddenFor(model => model.IDAnagrafica, new { value= ViewBag.IDAnagrafica})
         <div class="form-group">
             @Html.LabelFor(model => model.Importo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -48,7 +53,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -59,5 +64,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Torna ad Angrafiche", "Anagrafiche")
 </div>

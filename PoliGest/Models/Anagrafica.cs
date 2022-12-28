@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -10,13 +11,14 @@ namespace PoliGest.Models
     {
         public int IDAngrafica { get; set; }
 
-
+        [Required]
         public string Nome { get; set;}
-
+        [Required]
         public string Cognome { get; set; }
 
         public string Indirizzo { get; set; }
 
+        [Required]
         public int PuntiPatente { get; set; }
 
         public bool NeoPatentato { get; set; }
@@ -47,6 +49,8 @@ namespace PoliGest.Models
             con.Close();
             return (AnagraficheList);
         }   
+
+        
 
     }
 }

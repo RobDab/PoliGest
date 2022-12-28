@@ -126,7 +126,11 @@
     </Compile>
     <Compile Include="Models\Anagrafica.cs" />
     <Compile Include="Models\ConnControl.cs" />
+    <Compile Include="Models\DecurtamentoGrave.cs" />
+    <Compile Include="Models\HighFee.cs" />
+    <Compile Include="Models\TotDecurtamento.cs" />
     <Compile Include="Models\Verbale.cs" />
+    <Compile Include="Models\VperA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +171,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Verbali.cshtml" />
     <Content Include="Views\Home\NewVerbale.cshtml" />
+    <Content Include="Views\Home\_VerbaliPerAnagrafica.cshtml" />
+    <Content Include="Views\Home\_DecurtamentoPerAnagrafica.cshtml" />
+    <Content Include="Views\Home\_DecurtamentiGravi.cshtml" />
+    <Content Include="Views\Home\_ImportiElevati.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

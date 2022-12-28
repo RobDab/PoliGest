@@ -49,25 +49,68 @@ namespace PoliGest.Models
             }
             else if(model == "Verbale")
             {
-                Verbale verbale = current as Verbale;
+                Verbale verb = current as Verbale;
+
                 cmd.CommandText = "INSERT INTO VerbaliTab VALUES (@Importo, @Data , @Punti, @Comune, @IDAnagrafica)";
-                cmd.Parameters.AddWithValue("Importo", verbale.Importo);
-                cmd.Parameters.AddWithValue("Data", verbale.DataViolazione);
-                cmd.Parameters.AddWithValue("Punti", verbale.PuntiDecurtati);
-                cmd.Parameters.AddWithValue("Comune", verbale.Comune);
-                cmd.Parameters.AddWithValue("IDAnagrafica", verbale.IDAnagrafica);
+                cmd.Parameters.AddWithValue("Importo", verb.Importo);
+                cmd.Parameters.AddWithValue("Data", verb.DataViolazione);
+                cmd.Parameters.AddWithValue("Punti", verb.PuntiDecurtati);
+                cmd.Parameters.AddWithValue("Comune", verb.Comune);
+                cmd.Parameters.AddWithValue("IDAnagrafica", verb.IDAnagrafica);
+
+                if(verb.PuntiDecurtati > 0)
+                {
+                    RemovePoints(verb.IDAnagrafica, verb.PuntiDecurtati);
+                }
 
             }
             else
             {
                 return 0;
             }
-            
 
-           
+
             int rows = cmd.ExecuteNonQuery();
+            con.Close();
             return rows;
 
+        }
+
+
+        // RemovePoints è una routine che viene richiamata in callback quando creando un verbale si dichiarano punti da rimuove dalla patente.
+        public static void RemovePoints(int IDAnagrafica, int Points)
+        {
+
+            List<Anagrafica> listAnagraf = Anagrafica.GetAnagrafiche();
+            int PointsToRemove = Points;
+            
+            // Cerca l'anagrafica e raddoppia i punti da rimuovere se si tratta di un neo-patentato
+            foreach(Anagrafica a in listAnagraf)
+            {
+                if(a.IDAngrafica == IDAnagrafica)
+                {
+                    if (a.NeoPatentato)
+                    {
+                        PointsToRemove *= 2;
+                    }
+                }
+            }
+
+            
+            SqlConnection con = ConnControl.ConnectDB();
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+
+            cmd.Parameters.AddWithValue("IDAnagrafica", IDAnagrafica);
+            cmd.Parameters.AddWithValue("Punti", PointsToRemove);
+
+            cmd.CommandText = "UPDATE AnagraficheTab SET PuntiPatente = PuntiPatente - @Punti WHERE IDAnagrafica = @IDAnagrafica";
+
+            cmd.ExecuteNonQuery();
+
+            con.Close();
         }
     }
 }

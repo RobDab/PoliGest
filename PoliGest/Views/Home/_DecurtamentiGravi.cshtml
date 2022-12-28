@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PoliGest.Models.DecurtamentoGrave>
+
+
+<table class="table" style="margin-inline: auto; color: lightgray;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Importo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataViolazione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PuntiDecurtati)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.Importo)
+        </td>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.Cognome)
+        </td>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.DataViolazione)
+        </td>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.PuntiDecurtati)
+        </td>
+       
+    </tr>
+}
+
+</table>

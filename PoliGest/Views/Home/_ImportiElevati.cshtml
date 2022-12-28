@@ -1,17 +1,11 @@
-﻿@model IEnumerable<PoliGest.Models.Verbale>
+﻿@model IEnumerable<PoliGest.Models.HighFee>
 
-@{
-    ViewBag.Title = "Verbali";
-}
 
-<h2>Tutti i Verbali</h2>
-
-<p>
-    @Html.ActionLink("Nuovo Verbale", "Anagrafiche")
-</p>
-<table class="table">
+<table class="table"  style="margin-inline: auto; color: lightgray;">
     <tr>
-       
+        <th>
+            @Html.DisplayNameFor(model => model.IDVerbale)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Importo)
         </th>
@@ -22,37 +16,29 @@
             @Html.DisplayNameFor(model => model.PuntiDecurtati)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Comune)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.IDAnagrafica)
         </th>
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        
-        <td>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.IDVerbale)
+        </td>
+        <td style="border-top: 0;">
             @Html.DisplayFor(modelItem => item.Importo)
         </td>
-        <td>
+        <td style="border-top: 0;">
             @Html.DisplayFor(modelItem => item.DataViolazione)
         </td>
-        <td>
+        <td style="border-top: 0;">
             @Html.DisplayFor(modelItem => item.PuntiDecurtati)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comune)
-        </td>
-        <td>
+        <td style="border-top: 0;">
             @Html.DisplayFor(modelItem => item.IDAnagrafica)
         </td>
-        @*<td>
-            @Html.ActionLink("Contesta", "ContestaVerbale", new {  id=item.IDVerbale  })
-            
-            
-        </td>*@
+        
     </tr>
 }
 

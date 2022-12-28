@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PoliGest.Models.VperA>
+
+@if(ViewBag.ErrorMsg != null)
+            {
+                <p>@ViewBag.ErrorMsg</p>
+            }
+<table class="table" style="margin-inline: auto; color: lightgray;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TotVerbali)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.TotVerbali)
+        </td>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td style="border-top: 0;">
+            @Html.DisplayFor(modelItem => item.Cognome)
+        </td>
+       
+    </tr>
+}
+
+</table>
